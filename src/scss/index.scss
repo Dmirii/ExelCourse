@@ -1,5 +1,30 @@
-$green : red;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "~normalize.css";
+@import "variables";
+@import "header";
+@import "toolbar";
+@import "formula";
+@import "table";
+@import "dashboard";
+
+
 
 *{
-    background-color: $green;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto' , sans-serif;
+    font-size: 12px;
+    color: $main-color;
+}
+
+.exel {
+    position: relative;
+    color: $main-color;
+    height: 100%;
+    min-width: 100%;
+    font-size: .8rem;
 }
