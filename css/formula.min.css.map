@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AAGA,AAAA,cAAc,AAAA,CACV,QAAQ,CAAE,QAAQ,CAClB,IAAI,CAAE,CAAC,CACP,KAAK,CAAE,CAAC,CACR,GAAG,CAAE,IAAgC,CACrC,MAAM,CCNO,IAAI,CDOjB,OAAO,CAAE,IAAI,CACb,WAAW,CAAE,MAAM,CACnB,aAAa,CAAE,GAAG,CAAC,KAAK,CCNb,MAAO,CD0BrB,AAlBI,AAAD,mBAAM,AAAA,CACF,SAAS,CAAE,IAAI,CACf,UAAU,CAAE,MAAM,CAClB,UAAU,CAAE,MAAM,CAClB,YAAY,CAAE,GAAG,CAAC,KAAK,CCZhB,MAAO,CDad,SAAS,CCfC,IAAI,CDgBd,KAAK,CCbA,IAAI,CDeZ,AAEA,AAAD,oBAAO,AAAA,CACH,OAAO,CAAE,GAAG,CACZ,OAAO,CAAE,IAAI,CACb,UAAU,CAAE,IAAI,CAChB,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACZ,KAAK,CAAE,KAAK,CACf",
+    "sources": [
+        "../src/scss/formula.scss",
+        "../src/scss/_variables.scss",
+        "../src/scss/_mixins.scss",
+        "../src/scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "formula.min.css"
+}

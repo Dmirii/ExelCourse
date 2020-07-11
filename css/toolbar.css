@@ -1,0 +1,37 @@
+.exel__toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34px;
+  height: 40px;
+  border-top: 1px solid #c0c0c0;
+  border-bottom: 1px solid #c0c0c0;
+  padding: 7px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.exel__toolbar-button {
+  height: 24px;
+  min-width: 24px;
+  padding: 3px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.exel__toolbar-button i {
+  font-size: 18px;
+  color: grey;
+}
+
+.exel__toolbar-button:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+.exel__toolbar-button:active i, .exel__toolbar-button.active i {
+  color: green;
+}
+/*# sourceMappingURL=toolbar.css.map */
