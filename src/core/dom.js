@@ -1,3 +1,6 @@
+// создаем обертку как в jQuery
+// для добавления своих методово
+
 class Dom {
   constructor(selector) {
     // #app
@@ -30,6 +33,42 @@ class Dom {
     }
     return this;
   }
+
+  // доступ к дата сет через обертку ГЕТТЕР
+  get data() {
+    return this.$el.dataset;
+  }
+
+  // аналог closest
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+  // получаем координаты Dom элемента ( используем для ресайза)
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  // queryelectorAll
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  // доступ к style
+  css(styles ={}) {
+    // for ( const key in styles) {не используем из за еребора свойств прототипа
+    //   if (styles.hasOwnProperty(key)) {
+    //     console.log('key', key);
+    //     console.log(styles[key]);
+    //   }
+    // }
+    Object
+        .keys(styles)
+        .forEach( key => {
+          this.$el.style[key]=styles[key];
+        });
+    // return this.$el.style.styles;
+  }
+
   // мой AddEventListener
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);

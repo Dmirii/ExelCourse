@@ -15,7 +15,7 @@ export class ExcelComponent extends DomListener {
     this.initDOMListeners();
   }
 
-  destroy() {
+  destroy() {// удаляем прослушку
     this.removeDOMListeners();
   }
 }
