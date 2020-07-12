@@ -7,9 +7,10 @@ import {Table} from '@/components/table/Table';
 import './scss/index.scss';
 
 // создаем экземпляр класса ексель в конструктор передаем два параметра
-const exel = new Excel('#app', {
+const excel = new Excel('#app', {
   components: [Header, Toolbar, Formula, Table],
 });
-console.log('Exel ', exel);
 
-exel.render();
+
+// вызываем render изи EXCEL
+excel.render();

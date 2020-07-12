@@ -17,6 +17,7 @@
         height: $row-height;
 
         &-info{
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,12 +27,29 @@
             background: $table-bg;
             border-top: none;
 
+            &-resize{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                height:  4px;
+                z-index: 1000;
+                background-color: $cell-selected-clr;
+                opacity: 0;
+                &:hover{
+                    opacity: 1 !important;
+                    cursor: row-resize;
+                }
+
+            }
+
         }
 
         &-data{
             display: flex;
 
             &-column{
+                position: relative;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -41,6 +59,22 @@
                 border: 1px solid $border-color;
                 border-top: 0;
                 border-left: 0;
+
+                &-resize{
+                  position: absolute;
+                  top: 0;
+                  bottom: 0;
+                  right: 0;
+                  width: 4px;
+                  z-index: 1000;
+                  background-color: $cell-selected-clr;
+                  opacity: 0;
+
+                  &:hover{
+                      opacity: 1 !important ;
+                      cursor: col-resize;
+                  }
+                }
 
             }
 
