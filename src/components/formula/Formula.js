@@ -1,10 +1,15 @@
 import {ExcelComponent} from '@core/ExcelComponent';
+import {$} from '@core/dom';
 export class Formula extends ExcelComponent {
   static className = 'exel__formula';
-  constructor($root) {// передаем имена событий с вызовом родительского конструктора
+  constructor($root, options) {// передаем имена событий с вызовом родительского конструктора
     super($root, {
       name: 'Formula',
-      listeners: ['input', 'click'],
+      listeners: [
+        'input',
+        'click',
+        'keydown'],
+      ...options, // разворачиваем опции с помощьью спред оператора
 
     });
   }
@@ -12,15 +17,40 @@ export class Formula extends ExcelComponent {
   toHTML() {
     return `
     <div class="exel__formula-info">Fx</div>
-    <div class="exel__formula-input" contenteditable spellcheck="false"></div>
+    <div id="formula" class="exel__formula-input" contenteditable spellcheck="false"></div>
     `;
   }
 
-  onInput(event) {
-    console.log('Formula onInput:', event, this.$root);
+  init() {
+    super.init();
+    this.$formula = this.$root.find('#formula');// находим DIV инпут формулы
+
+    this.$on('table:select', $cell => {
+      this.$formula.text($cell.text());// получаем и вставляем текст гетером.сетером text
+    });
+
+    this.$on('table:input', $cell => {
+      this.$formula.text($cell.text());
+    });
   }
 
+  onInput(event) {
+    this.$emit('formula:input', // используем фасад из ExelComponenta
+        $(event.target)// ивент обернули в нашу обертку $
+            .text()); // получили текст из формулы
+
+    if (event ==='Enter') {
+      console.log('enter');
+    }
+  }
+  onKeydown(event) {
+    const keys = ['Tab', 'Enter'];
+    if (keys.includes(event.key)) {
+      event.preventDefault();
+      this.$emit('formula:done');
+    }
+  }
   onClick(event) {
-    console.log('Formula onClick:', event.target);
+
   }
 }

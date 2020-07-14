@@ -1,11 +1,11 @@
 import {ExcelComponent} from '@core/ExcelComponent';
 export class Toolbar extends ExcelComponent {
   static className = 'exel__toolbar';
-  constructor($root) {// передаем имена событий с вызовом родительского конструктора
+  constructor($root, options) {// передаем имена событий с вызовом родительского конструктора
     super($root, {
       name: 'Toolbar',
       listeners: ['click'],
-
+      ...options,
     });
   }
 

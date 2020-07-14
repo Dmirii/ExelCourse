@@ -5,11 +5,20 @@ const CODES = {
   Z: 90,
 };
 
-// Формируем ячеку
-function toCell(_, indexCol) {
-  return `
-    <div data-col="${indexCol}" class="exel__table-row-data-cell"contenteditable></div>`;
+// // Формируем ячеку
+// function toCell(indexRow, indexCol) {
+//   return `
+//     <div data-col="${indexCol}" data-row="${indexRow}" class="exel__table-row-data-cell"contenteditable></div>`;
+// }
+
+function toCell(row) {// функция использует замыкание
+  return function(_, col) {// возращаем функцию для передачи в нее COL
+    return `
+        <div data-type="cell" data-id="${row}:${col}"data-col="${col}" data-row="${row}" class="exel__table-row-data-cell"contenteditable></div>`;
+  };// row мы передаем в основной функцие
 }
+
+
 // <div class ="exel__table-row-data-column-resize></div>
 // формируем колонну(заглавная строка)
 function toColumn(el, index) {
@@ -57,13 +66,14 @@ export function createTeble(rowsCownt = 20) {
   rows.push(createRow(null, cols));
 
 
-  for (let i=0; i<rowsCownt; i++) {
+  for (let row=0; row<rowsCownt; row++) {
     // Формируем строки таблицы
     const emptyCols = new Array(colsCount)
         .fill('')// заполняем массив ничем
-        .map(toCell)// добавляем ячеку
+        // .map(toCell)// добавляем ячеку
+        .map(toCell(row))
         .join(''); // делаем все одной строкой
-    rows.push(createRow(i+1, emptyCols));// первая строчка не нулевая
+    rows.push(createRow(row+1, emptyCols));// первая строчка не нулевая
   }
 
 
