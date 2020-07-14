@@ -7,7 +7,7 @@ class Dom {
     this.$el = typeof selector ==='string' ? document.querySelector(selector) : selector;
   }
 
-  html(html) {
+  html(html) {// возвращаем разметку
     // setter если строчка есть то меняем this
     if (typeof html === 'string') {
       this.$el.innerHTML = html;
@@ -15,6 +15,17 @@ class Dom {
     }
     // в любом случяае возращем getter
     return this.$el.outerHTML.trim();
+  }
+
+  text(text) {
+    if (typeof text ==='string') {
+      this.$el.textContent= text;
+      return this;
+    }
+    if (this.$el.tagName.toLowerCase() === 'input') {
+      return this.$el.value.trim();
+    }
+    return this.$el.textContent.trim();
   }
 
   clear() {// очищаем html
@@ -39,6 +50,18 @@ class Dom {
     return this.$el.dataset;
   }
 
+  // возвращает id ячейки
+  id(parse) {
+    if (parse) {
+      const parsed = this.id().split(':');
+      return {
+        row: +parsed[0],
+        col: +parsed[1],
+      };
+    }
+    return this.data.id;
+  }
+
   // аналог closest
   closest(selector) {
     return $(this.$el.closest(selector));
@@ -48,10 +71,6 @@ class Dom {
     return this.$el.getBoundingClientRect();
   }
 
-  // queryelectorAll
-  findAll(selector) {
-    return this.$el.querySelectorAll(selector);
-  }
 
   // доступ к style
   css(styles ={}) {
@@ -69,6 +88,17 @@ class Dom {
     // return this.$el.style.styles;
   }
 
+  // добавляем класс элементу
+  addClass(className) {
+    this.$el.classList.add(className);
+    return this;
+  }
+  // добавляем класс элементу
+  removeClass(className) {
+    this.$el.classList.remove(className);
+    return this;
+  }
+
   // мой AddEventListener
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback);
@@ -77,6 +107,23 @@ class Dom {
   // мой removeEventListener
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback);
+  }
+
+
+  // querySelector обернутывй в Dom
+  find(selector) {//
+    return $(this.$el.querySelector(selector));
+  }
+
+  // queryelectorAll
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  // Фокус для выбранной ячейки
+  focus() {
+    this.$el.focus();
+    return this;
   }
 }
 
