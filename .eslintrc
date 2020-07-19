@@ -10,7 +10,9 @@
         "require-jsdoc":"off",
         "no-unused-vars":"off",
         "arrow-parens":"off",
-        "max-len":"off"
+        "max-len":"off",
+        "no-debugger":"off",
+        
         
         
         

@@ -17,8 +17,10 @@ class Dom {
     return this.$el.outerHTML.trim();
   }
 
+  // geter/setter для контента дом элементов
   text(text) {
-    if (typeof text ==='string') {
+    console.log('test:', text);
+    if (typeof text !=='undefined') {
       this.$el.textContent= text;
       return this;
     }
@@ -88,6 +90,13 @@ class Dom {
     // return this.$el.style.styles;
   }
 
+  getStyles(styles = []) {
+    return styles.reduce((res, s ) =>{
+      res[s] = this.$el.style[s];
+      return res;
+    }, {});
+  }
+
   // добавляем класс элементу
   addClass(className) {
     this.$el.classList.add(className);
@@ -124,6 +133,15 @@ class Dom {
   focus() {
     this.$el.focus();
     return this;
+  }
+
+  attr(name, value) {
+    if (value) {
+      this.$el.setAttribute(name, value);
+      return this;
+    } else {
+      return this.$el.getAttribute(name);
+    }
   }
 }
 

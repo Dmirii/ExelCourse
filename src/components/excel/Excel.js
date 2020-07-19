@@ -1,19 +1,25 @@
 import {$} from '@core/dom';
 import {Emitter} from '@core/Emitter';
+import {StoreSubscriber} from '@core/StoreSubscriber';
 
 export class Excel {
   constructor(selector, options) {
     this.$el =$(selector);
     this.components = options.components || [];
-    this.emitter = new Emitter();
+    this.store = options.store; // Это мой Redux
+    this.emitter = new Emitter(); // Это экземпляр класса обзервер
+    this.subscriber = new StoreSubscriber(this.store);// Это экземпляр класса для подписки на Store
 
     // console.log('Exel this:', this);
   }
   getRoot() {
     // получаем корневой элемент с заполнеными компонентами (таблица, хедер)
     const $root = $.create('div', 'exel');// создали див и в него положили
+
+    // параметры для передачи компонентам
     const componentOptions = {
       emitter: this.emitter,
+      store: this.store,
     };
 
     this.components = this.components.map(Component => {
@@ -35,10 +41,12 @@ export class Excel {
 
   render() {// добавляет содержимое в основной элемент Эксель (div app)
     this.$el.append(this.getRoot());// собираем DOM дерево
+    this.subscriber.subscribeComponents(this.components);
     this.components.forEach(component => component.init());// вызываем метод инит описаный ExelComponent
   }
 
   destroy() {
+    this.subscriber.unsubscribeFromStore();
     this.components.forEach(component => component.destroy());
   }
 }
