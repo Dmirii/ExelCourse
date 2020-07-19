@@ -10,6 +10,10 @@ export class TableSelection {
     this.group=[];// очищаем массив для внутреннего хранения элементоы
   }
 
+  get selectedIds() {
+    return this.group.map( $el => $el.id());
+  }
+
   select($el) {// $el inctanceof DOM === true
     this.clear();// очищаем массив ячеек
     this.group.push($el);// добавляем выбранную ячейку в массив ячеек
@@ -22,5 +26,10 @@ export class TableSelection {
     this.clear();
     this.group = $group;// записываем во внутреннюю переменную группу выбраных ячеек
     this.group.forEach($el => $el.addClass(TableSelection.className) );
+  }
+
+  // метод для изменения стиля отображения
+  applyStyle(style) {
+    this.group.forEach( $el => $el.css(style));
   }
 }

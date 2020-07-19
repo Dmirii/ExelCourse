@@ -5,7 +5,7 @@ export class Emitter {
 
   // dispatch, fier, triger
   // уыедомляем слушателей если они есть
-  emit(event, ...args) {
+  emit(event, ...args) { // отправляем депешу
     if (!Array.isArray(this.listeners[event])) {
       return false;
     }

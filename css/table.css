@@ -20,6 +20,7 @@
 }
 
 .exel__table-row-info {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,6 +37,22 @@
   border-top: none;
 }
 
+.exel__table-row-info-resize {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 4px;
+  z-index: 1000;
+  background-color: #3c74ff;
+  opacity: 0;
+}
+
+.exel__table-row-info-resize:hover {
+  opacity: 1 !important;
+  cursor: row-resize;
+}
+
 .exel__table-row-data {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,6 +60,7 @@
 }
 
 .exel__table-row-data-column {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,6 +76,22 @@
   border: 1px solid #c0c0c0;
   border-top: 0;
   border-left: 0;
+}
+
+.exel__table-row-data-column-resize {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 4px;
+  z-index: 1000;
+  background-color: #3c74ff;
+  opacity: 0;
+}
+
+.exel__table-row-data-column-resize:hover {
+  opacity: 1 !important;
+  cursor: col-resize;
 }
 
 .exel__table-row-data-cell {

@@ -7,8 +7,8 @@ export class Formula extends ExcelComponent {
       name: 'Formula',
       listeners: [
         'input',
-        'click',
         'keydown'],
+      subscribe: ['currentText'],
       ...options, // разворачиваем опции с помощьью спред оператора
 
     });
@@ -29,9 +29,16 @@ export class Formula extends ExcelComponent {
       this.$formula.text($cell.text());// получаем и вставляем текст гетером.сетером text
     });
 
-    this.$on('table:input', $cell => {
-      this.$formula.text($cell.text());
-    });
+    // this.$on('table:input', $cell => {
+    //   this.$formula.text($cell.text());
+    // });
+    // this.$subscribe(state =>{
+    //   this.$formula.text(state.currentText);
+    //   console.log('Formula:Subscribe', state.currentText);
+    // });
+  }
+  storeChanged({currentText}) {
+    this.$formula.text(currentText);
   }
 
   onInput(event) {
@@ -49,8 +56,5 @@ export class Formula extends ExcelComponent {
       event.preventDefault();
       this.$emit('formula:done');
     }
-  }
-  onClick(event) {
-
   }
 }
