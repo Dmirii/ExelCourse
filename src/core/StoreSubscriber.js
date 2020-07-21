@@ -1,4 +1,4 @@
-// класс для Exel для реализации
+// класс для excel для реализации
 // сохранения состояний системмы // подрписка отписка от стора
 import {isEqual} from '@core/utils';
 export class StoreSubscriber {
@@ -26,6 +26,9 @@ export class StoreSubscriber {
         }
       });
       this.prevState = this.store.getState();
+      if (process.env.NODE_ENV === 'development') {
+        window['redux'] = this.prevState;
+      }
     });
   }
 

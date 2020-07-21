@@ -66,3 +66,10 @@ export function debounce(fn, wait) {
   };
 }
 
+export function clon(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+export function preventDefault(event) {
+  event.preventDefault();
+}

@@ -1,5 +1,5 @@
 export class TableSelection {
-  static className ='exel__table-row-data-cell-selected'// може обратится только через имя класса
+  static className ='excel__table-row-data-cell-selected'// може обратится только через имя класса
   constructor() {
     this.group =[];// это массив для хранения выбранных ячеек
     this.current = null; // это выбранная начальная ячейка для группового выделения

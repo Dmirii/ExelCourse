@@ -15,7 +15,7 @@ import {parse} from '@core/parse';
 // import {range} from '@core/utils';
 
 export class Table extends ExcelComponent {
-  static className = 'exel__table';
+  static className = 'excel__table';
   constructor($root, options) {// передаем имена событий с вызовом родительского конструктора
     super($root, {
       name: 'Table',
@@ -70,7 +70,7 @@ export class Table extends ExcelComponent {
 
   // переписываем метод инит
   init() {
-    super.init(); // вызываем метод инит родителя ExelComponent
+    super.init(); // вызываем метод инит родителя excelComponent
     // console.log(this.$root);
     const $cell = this.$root.find('[data-id="0:0"]');
     this.selection.group=[];

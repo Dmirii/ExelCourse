@@ -1,7 +1,7 @@
 import {ExcelComponent} from '@core/ExcelComponent';
 import {$} from '@core/dom';
 export class Formula extends ExcelComponent {
-  static className = 'exel__formula';
+  static className = 'excel__formula';
   constructor($root, options) {// передаем имена событий с вызовом родительского конструктора
     super($root, {
       name: 'Formula',
@@ -16,8 +16,8 @@ export class Formula extends ExcelComponent {
 
   toHTML() {
     return `
-    <div class="exel__formula-info">Fx</div>
-    <div id="formula" class="exel__formula-input" contenteditable spellcheck="false"></div>
+    <div class="excel__formula-info">Fx</div>
+    <div id="formula" class="excel__formula-input" contenteditable spellcheck="false"></div>
     `;
   }
 
@@ -26,7 +26,7 @@ export class Formula extends ExcelComponent {
     this.$formula = this.$root.find('#formula');// находим DIV инпут формулы
 
     this.$on('table:select', $cell => {
-      this.$formula.text($cell.text());// получаем и вставляем текст гетером.сетером text
+      this.$formula.text($cell.data.value);// получаем и вставляем текст гетером.сетером text
     });
 
     // this.$on('table:input', $cell => {
@@ -42,7 +42,7 @@ export class Formula extends ExcelComponent {
   }
 
   onInput(event) {
-    this.$emit('formula:input', // используем фасад из ExelComponenta
+    this.$emit('formula:input', // используем фасад из excelComponenta
         $(event.target)// ивент обернули в нашу обертку $
             .text()); // получили текст из формулы
 

@@ -1,9 +1,9 @@
-import {ExelStateComponent} from '@core/ExelStateComponent';
+import {excelStateComponent} from '@core/excelStateComponent';
 import {createToolbar} from './toolbar.tamplate';
 import {$} from '@core/dom';
 import {defaultStyles} from '@/constans';
-export class Toolbar extends ExelStateComponent {
-  static className = 'exel__toolbar';
+export class Toolbar extends excelStateComponent {
+  static className = 'excel__toolbar';
   constructor($root, options) {// передаем имена событий с вызовом родительского конструктора
     super($root, {
       name: 'Toolbar',

@@ -1,4 +1,4 @@
-.exel__formula {
+.excel__formula {
   position: absolute;
   left: 0;
   right: 0;
@@ -13,7 +13,7 @@
   border-bottom: 1px solid #c0c0c0;
 }
 
-.exel__formula-info {
+.excel__formula-info {
   font-size: 18px;
   font-style: italic;
   text-align: center;
@@ -22,7 +22,7 @@
   color: #888;
 }
 
-.exel__formula-input {
+.excel__formula-input {
   padding: 4px;
   outline: none;
   font-style: 12px;

@@ -1,4 +1,4 @@
-.exel__table {
+.excel__table {
   position: absolute;
   left: 0;
   right: 0;
@@ -7,7 +7,7 @@
   padding-bottom: 2px;
 }
 
-.exel__table-row {
+.excel__table-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +19,7 @@
   height: 24px;
 }
 
-.exel__table-row-info {
+.excel__table-row-info {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -37,7 +37,7 @@
   border-top: none;
 }
 
-.exel__table-row-info-resize {
+.excel__table-row-info-resize {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -48,18 +48,18 @@
   opacity: 0;
 }
 
-.exel__table-row-info-resize:hover {
+.excel__table-row-info-resize:hover {
   opacity: 1 !important;
   cursor: row-resize;
 }
 
-.exel__table-row-data {
+.excel__table-row-data {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.exel__table-row-data-column {
+.excel__table-row-data-column {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -78,7 +78,7 @@
   border-left: 0;
 }
 
-.exel__table-row-data-column-resize {
+.excel__table-row-data-column-resize {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -89,12 +89,12 @@
   opacity: 0;
 }
 
-.exel__table-row-data-column-resize:hover {
+.excel__table-row-data-column-resize:hover {
   opacity: 1 !important;
   cursor: col-resize;
 }
 
-.exel__table-row-data-cell {
+.excel__table-row-data-cell {
   min-width: 40px;
   padding: 5px;
   width: 120px;
@@ -107,7 +107,7 @@
   outline: none;
 }
 
-.exel__table-row-data-cell-selected {
+.excel__table-row-data-cell-selected {
   border: none;
   z-index: 2;
   outline: 2px solid #3c74ff;
