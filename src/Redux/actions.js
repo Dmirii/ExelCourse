@@ -3,6 +3,7 @@ import {CHANGE_TEXT} from '@/Redux/types';
 import {CHANGE_STYLES} from '@/Redux/types';
 import {APPLY_STYLE} from '@/Redux/types';
 import {CHANGE_TITLE} from '@/Redux/types';
+import {UPDATE_DATE} from '@/Redux/types';
 
 
 // action creater // resize table
@@ -41,6 +42,12 @@ export function changeTitle(data) {
   return {
     type: CHANGE_TITLE,
     data,
+  };
+}
+export function updateDate() {
+  return {
+    type: UPDATE_DATE,
+
   };
 }
 

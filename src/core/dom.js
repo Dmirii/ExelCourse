@@ -19,7 +19,7 @@ class Dom {
 
   // geter/setter для контента дом элементов
   text(text) {
-    console.log('test:', text);
+    // console.log('test:', text);
     if (typeof text !=='undefined') {
       this.$el.textContent= text;
       return this;

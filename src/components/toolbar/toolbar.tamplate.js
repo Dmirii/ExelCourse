@@ -3,7 +3,7 @@ function toButton(button) {
     data-type="button"
     data-value='${JSON.stringify(button.value)}'`;
   return `
-    <div ${meta} class="exel__toolbar-button ${button.active ? 'active':''}">
+    <div ${meta} class="excel__toolbar-button ${button.active ? 'active':''}">
     <i ${meta} class="material-icons">${button.icon}</i></div>`;
 }
 

@@ -16,7 +16,7 @@ const CODES = {
 // // Формируем ячеку
 // function toCell(indexRow, indexCol) {
 //   return `
-//     <div data-col="${indexCol}" data-row="${indexRow}" class="exel__table-row-data-cell"contenteditable></div>`;
+//     <div data-col="${indexCol}" data-row="${indexRow}" class="excel__table-row-data-cell"contenteditable></div>`;
 // }
 
 function toCell(state, row) {// функция использует замыкание
@@ -29,7 +29,7 @@ function toCell(state, row) {// функция использует замыка
       ...state.stylesState[id],
 
     });
-    console.log(styles);
+    // console.log(styles);
     return `
         <div style=" ${styles}; width:${width}"
          data-type="cell" 
@@ -37,18 +37,18 @@ function toCell(state, row) {// функция использует замыка
          data-col="${col}" 
          data-row="${row}"
          data-value="${data ||''}"
-         class="exel__table-row-data-cell"
+         class="excel__table-row-data-cell"
          contenteditable>${parse(data) || ''}</div>`;
   };// row мы передаем в основной функцие
 }
 
 
-// <div class ="exel__table-row-data-column-resize></div>
+// <div class ="excel__table-row-data-column-resize></div>
 // формируем колонну(заглавная строка)
 function toColumn({col, index, width}) {
   return `
-    <div style="width:${width}" data-col="${index}" data-type="resizable" class="exel__table-row-data-column">
-    ${col} <div data-resize="col" class="exel__table-row-data-column-resize"></div>
+    <div style="width:${width}" data-col="${index}" data-type="resizable" class="excel__table-row-data-column">
+    ${col} <div data-resize="col" class="excel__table-row-data-column-resize"></div>
    
     </div>`;
 }//
@@ -59,14 +59,14 @@ function createRow(index, content, state) {
   // content это содержимое ячеки ( для главной там будут буквы)
   // console.log(index, ' : ', state);
   const height = getHeight(state.rowState, index);
-  const resizer = index ? '<div data-resize="row" class="exel__table-row-info-resize"></div>' : '';
+  const resizer = index ? '<div data-resize="row" class="excel__table-row-info-resize"></div>' : '';
   return `
-  <div style="height:${height}" data-row="${index}" data-type="resizable" class="exel__table-row">
-        <div class="exel__table-row-info">
+  <div style="height:${height}" data-row="${index}" data-type="resizable" class="excel__table-row">
+        <div class="excel__table-row-info">
            ${index ? index : ''} 
            ${resizer}
         </div>
-        <div class="exel__table-row-data"> ${content}</div>
+        <div class="excel__table-row-data"> ${content}</div>
   </div>
   `;
 }

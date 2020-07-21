@@ -3,6 +3,7 @@ import {CHANGE_TEXT} from '@/Redux/types';
 import {CHANGE_STYLES} from '@/Redux/types';
 import {APPLY_STYLE} from '@/Redux/types';
 import {CHANGE_TITLE} from '@/Redux/types';
+import {UPDATE_DATE} from '@/Redux/types';
 
 import {toInlineStyles} from '@core/utils';
 
@@ -37,6 +38,8 @@ export function rootReducer(state, action) {
       };
     case CHANGE_TITLE:
       return {...state, title: action.data};
+    case UPDATE_DATE:
+      return {...state, openDate: new Date().toJSON()};
 
 
     default: return state;

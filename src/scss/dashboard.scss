@@ -2,7 +2,7 @@
 @import "mixins";
 
 .db{
-
+    overflow: hidden;
     &__header{
         color: $cell-text-clr;
         position: fixed;
@@ -54,6 +54,7 @@
 
     &__table{
         padding: 1rem;
+        
 
         &-header{
             display: flex;
@@ -67,8 +68,10 @@
         }
 
         &-list{
+            height:  28rem;
+           
             @include clear-list;
-
+            overflow: auto;
             &-record{
                 display: flex;
                 justify-content: space-between;

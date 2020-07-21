@@ -1,20 +1,21 @@
 import {$} from '@core/dom';
 import {Emitter} from '@core/Emitter';
 import {StoreSubscriber} from '@core/StoreSubscriber';
+import {updateDate} from '@/redux/actions.js';
+import {preventDefault} from '@core/utils';
 
 export class Excel {
-  constructor(selector, options) {
-    this.$el =$(selector);
+  constructor(options) {
     this.components = options.components || [];
     this.store = options.store; // Это мой Redux
     this.emitter = new Emitter(); // Это экземпляр класса обзервер
     this.subscriber = new StoreSubscriber(this.store);// Это экземпляр класса для подписки на Store
 
-    // console.log('Exel this:', this);
+    // console.log('excel this:', this);
   }
   getRoot() {
     // получаем корневой элемент с заполнеными компонентами (таблица, хедер)
-    const $root = $.create('div', 'exel');// создали див и в него положили
+    const $root = $.create('div', 'ecxel');// создали див и в него положили
 
     // параметры для передачи компонентам
     const componentOptions = {
@@ -39,15 +40,20 @@ export class Excel {
     return $root;
   }
 
-  render() {// добавляет содержимое в основной элемент Эксель (div app)
-    this.$el.append(this.getRoot());// собираем DOM дерево
+  init() {// добавляет содержимое в основной элемент Эксель (div app)
+    // this.$el.append(this.getRoot());// собираем DOM дерево
+    if (process.env.NODE_ENV === 'production') {
+      document.addEventListener('contextmenu', preventDefault);
+    }
+    this.store.dispatch(updateDate());
     this.subscriber.subscribeComponents(this.components);
-    this.components.forEach(component => component.init());// вызываем метод инит описаный ExelComponent
+    this.components.forEach(component => component.init());// вызываем метод инит описаный excelComponent
   }
 
   destroy() {
-    this.subscriber.unsubscribeFromStore();
+    this.subscriber.unsubscribFromStore();
     this.components.forEach(component => component.destroy());
+    document.removeEventListener('contextmenu', preventDefault);
   }
 }
 

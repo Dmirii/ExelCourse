@@ -3,11 +3,11 @@
 import {$} from '@core/dom';
 
 // функция ресайза элементов таблицы        // получаем mouseEvent с координатами
-export function resizeHendler($root, event) {// получаем $el обернутый в Dom div exel__table
+export function resizeHendler($root, event) {// получаем $el обернутый в Dom div excel__table
   return new Promise( resolve => {
     const $resizer = $(event.target);// находим сам элемент в Dom дереве
     // const $p = $resizer.$el.parentNode; логический уровень пересекается с абстрактным
-    // const $parent = $resizer.$el.closest('.exel__table-row-data-column');
+    // const $parent = $resizer.$el.closest('.excel__table-row-data-column');
     const $parent = $resizer.closest('[data-type="resizable"]'); // нашли родителя ресайзера по датаатрибутам
     const coords = $parent.getCoords();// получаем координаты обекта родителя ресайзер
     const type = $resizer.data.resize;// получаем тип элемента колонка или строка
