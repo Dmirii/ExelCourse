@@ -1,5 +1,5 @@
 # ExelCourse
-My seconde JS SPA
+My second JS SPA
 (85 days of self-education.)
 framework / Фреймворк
 pure js / чистый js
